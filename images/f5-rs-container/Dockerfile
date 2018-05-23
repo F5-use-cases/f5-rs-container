@@ -45,7 +45,7 @@ EXPOSE 22 80 50000 8080 8000
 # Set our default host redirect ports SNOPS_HOST_HTTP="8080" SNOPS_HOST_SSH="2222"
 # Enable cloning/install of useful repositories on boot SNOPS_AUTOCLONE="1"
 # ENV variable used by various scripts to detect the container environment SNOPS_ISALIVE =1 
-ENV SNOPS_GIT_HOST="gitswarm.f5net.com" SNOPS_HOST_HTTP="8080" SNOPS_HOST_SSH="2222" SNOPS_AUTOCLONE="1" SNOPS_GH_BRANCH="master" SNOPS_ISALIVE="1"
+ENV SNOPS_GIT_HOST="github.com" SNOPS_HOST_HTTP="8080" SNOPS_HOST_SSH="2222" SNOPS_AUTOCLONE="1" SNOPS_GH_BRANCH="master" SNOPS_ISALIVE="1"
 
 
 ####################################jekins install#######################################################
