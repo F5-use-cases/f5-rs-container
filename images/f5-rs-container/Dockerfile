@@ -8,7 +8,7 @@ FROM alpine:3.5
 
 LABEL maintainer "y.rosenboim@f5.com"
 
-ENV SNOPS_REPO https://github.com/yossi-r/f5-rs-container.git
+ENV SNOPS_REPO https://github.com/F5-use-cases/f5-rs-container.git
 
 # Set the SNOPS image name
 ENV SNOPS_IMAGE f5-rs-container
