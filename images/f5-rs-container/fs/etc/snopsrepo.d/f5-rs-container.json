@@ -1,0 +1,200 @@
+{
+	"name":"f5-rs-container",
+	"repos": [
+		{
+			"name":"f5-rs-jenkins",
+			"repo":"https://github.com/F5-use-cases/f5-rs-jenkins.git",
+			"branch":"master",
+			"docs": [
+				{
+					"name":"",
+					"url":""
+				}
+			],
+			"install": [
+				"#!/bin/bash",
+				"cp -r /home/snops/jobs/* /var/jenkins_home/jobs",
+				"chown -R jenkins:snops /var/jenkins_home/jobs"
+			],
+			"skip":false,
+			"skipinstall":true
+		},
+		{
+			"name":"f5-rs-attacks",
+			"repo":"https://github.com/F5-use-cases/f5-rs-attacks.git",
+			"branch":"master",
+			"docs": [
+				{
+					"name":"README",
+					"url":"http://f5-rs-docs.readthedocs.io/en/latest/"
+				}
+			],
+			"install": [
+				"#!/bin/bash",
+				"chmod -R g+rwx /home/snops/f5-rs-attacks"
+			],
+			"skip":false,
+			"skipinstall":true
+		},
+		{
+			"name":"f5-rs-aws-net",
+			"repo":"https://github.com/F5-use-cases/f5-rs-aws-net.git",
+			"branch":"master",
+			"docs": [
+				{
+					"name":"README",
+					"url":"http://f5-rs-docs.readthedocs.io/en/latest/"
+				}
+			],
+			"install": [
+				"#!/bin/bash",
+				"chmod -R g+rwx f5-rs-aws-net"
+			],
+			"skip":false,
+			"skipinstall":true
+		},
+		{
+			"name":"f5-rs-aws-external-lb",
+			"repo":"https://github.com/F5-use-cases/f5-rs-aws-external-lb.git",
+			"branch":"master",
+			"docs": [
+				{
+					"name":"README",
+					"url":"http://f5-rs-docs.readthedocs.io/en/latest/"
+				}
+			],
+			"install": [
+				"#!/bin/bash",
+				"chmod -R g+rwx f5-rs-aws-external-lb"
+			],
+			"skip":false,
+			"skipinstall":true
+		},
+		{
+			"name":"f5-rs-aws-bigip-onboard",
+			"repo":"https://github.com/F5-use-cases/f5-rs-aws-bigip-onboard.git",
+			"branch":"master",
+			"docs": [
+				{
+					"name":"README",
+					"url":"http://f5-rs-docs.readthedocs.io/en/latest/"
+				}
+			],
+			"install": [
+				"#!/bin/bash",
+				"chmod -R g+rwx f5-rs-aws-bigip-onboard"
+			],
+			"skip":false,
+			"skipinstall":true
+		},
+		{
+			"name":"f5-rs-aws-bigip",
+			"repo":"https://github.com/F5-use-cases/f5-rs-aws-bigip.git",
+			"branch":"master",
+			"docs": [
+				{
+					"name":"README",
+					"url":"http://f5-rs-docs.readthedocs.io/en/latest/"
+				}
+			],
+			"install": [
+				"#!/bin/bash",
+				"chmod -R g+rwx f5-rs-aws-bigip"
+			],
+			"skip":false,
+			"skipinstall":true
+		},
+		{
+			"name":"f5-rs-aws-app",
+			"repo":"https://github.com/F5-use-cases/f5-rs-aws-app.git",
+			"branch":"master",
+			"docs": [
+				{
+					"name":"README",
+					"url":"http://f5-rs-docs.readthedocs.io/en/latest/"
+				}
+			],
+			"install": [
+				"#!/bin/bash",
+				"chmod -R g+rwx f5-rs-aws-app"
+			],
+			"skip":false,
+			"skipinstall":true
+		},
+		{
+			"name":"f5-rs-iapp",
+			"repo":"https://github.com/F5-use-cases/f5-rs-iapp.git",
+			"branch":"master",
+			"docs": [
+				{
+					"name":"README",
+					"url":"http://f5-rs-docs.readthedocs.io/en/latest/"
+				}
+			],
+			"install": [
+				"#!/bin/bash",
+				"chmod -R g+rwx f5-rs-iapp"
+			],
+			"skip":false,
+			"skipinstall":true
+		},
+		{
+			"name":"f5-rs-bigip-general-onboard",
+			"repo":"https://github.com/F5-use-cases/f5-rs-bigip-general-onboard.git",
+			"branch":"master",
+			"docs": [
+				{
+					"name":"",
+					"url":""
+				}
+			],
+			"install": [
+				"#!/bin/bash",
+				"cp -r /home/snops/jobs/* /var/jenkins_home/jobs",
+				"chown -R jenkins:snops /var/jenkins_home/jobs"
+			],
+			"skip":false,
+			"skipinstall":true
+		},
+		{
+			"name":"f5-rs-aws-tag-master",
+			"repo":"https://github.com/F5-use-cases/f5-rs-aws-tag-master.git",
+			"branch": {
+				"env":"SNOPS_GH_BRANCH",
+				"default":"master"
+			},
+			"docs": [
+				{
+					"name":"readme",
+					"url":"http://f5-rs-docs.readthedocs.io/en/latest/"
+				}
+			],
+			"install": [
+				"#!/bin/bash",
+				"chmod -R g+rwx /home/snops/f5-rs-*"
+			],
+			"skip":false,
+			"skipinstall":true
+		},
+		{
+			"name":"f5-rs-as3",
+			"repo":"https://github.com/F5-use-cases/f5-rs-as3.git",
+			"branch": {
+				"env":"SNOPS_GH_BRANCH",
+				"default":"master"
+			},
+			"docs": [
+				{
+					"name":"readme",
+					"url":"http://f5-rs-docs.readthedocs.io/en/latest/"
+				}
+			],
+			"install": [
+				"#!/bin/bash",
+				"chmod -R g+rwx /home/snops/f5-rs-* "
+			],
+			"skip":false,
+			"skipinstall":true
+		}
+	]
+}

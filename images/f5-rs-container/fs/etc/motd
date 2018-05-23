@@ -1,0 +1,47 @@
+                                .----------.
+                               /          /
+                              /   ______.'
+                        _.._ /   /_
+                      .' .._/      '''--.
+                      | '  '___          `.
+                    __| |__    `'.         |
+                   |__   __|      )        |
+                      | | ......-'        /
+                      | | \          _..'`
+                      | |  '------'''
+                      | |                      _
+                      |_|                     | |
+ ___ _   _ _ __   ___ _ __          _ __   ___| |_ ___  _ __  ___
+/ __| | | | '_ \ / _ \ '__| ______ | '_ \ / _ \ __/ _ \| '_ \/ __|
+\__ \ |_| | |_) |  __/ |   |______|| | | |  __/ || (_) | |_) \__ \
+|___/\__,_| .__/ \___|_|           |_| |_|\___|\__\___/| .__/|___/
+          | |                                          | |
+          |_|                                          |_|
+
+Welcome to the f5-super-netops-container.  This image has the following
+services running:
+
+ SSH  tcp/22
+ HTTP (Jenkins) tcp/8080
+
+To access these services you may need to remap ports on your host to the
+local container using the command:
+
+ docker run -p 10000:8080 -p 2222:22 -it yossiros/f5-rs-container
+
+From the HOST perspective, this results in:
+
+ localhost:2222 -> f5-super-netops-container:22
+ localhost:10000 -> f5-super-netops-container:8080
+
+You can then connect using the following:
+
+ HTTP: http://localhost:10000
+ SSH:  ssh -p 2222 snops@localhost
+
+Default Credentials:
+
+ snops/default
+ root/default
+
+Go forth and automate!
