@@ -13,11 +13,11 @@
 			],
 			"install": [
 				"#!/bin/bash",
-				"cp -r /home/snops/jobs/* /var/jenkins_home/jobs",
-				"chown -R jenkins:snops /var/jenkins_home/jobs"
+				"cp -r /home/snops/f5-rs-jenkins/f5-rs-global-vars-vault.yaml /home/snops/f5-rs-global-vars-vault.yaml",
+				"chown jenkins:snops /home/snops/f5-rs-global-vars-vault.yaml"
 			],
 			"skip":false,
-			"skipinstall":true
+			"skipinstall":false
 		},
 		{
 			"name":"f5-rs-attacks",
