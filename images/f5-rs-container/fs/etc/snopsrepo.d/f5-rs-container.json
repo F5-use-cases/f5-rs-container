@@ -177,6 +177,26 @@
 			"skipinstall":true
 		},
 		{
+			"name":"f5-rs-app1",
+			"repo":"https://github.com/F5-use-cases/f5-rs-app1.git",
+			"branch": {
+				"env":"SNOPS_GH_BRANCH",
+				"default":"master"
+			},
+			"docs": [
+				{
+					"name":"readme",
+					"url":"http://f5-rs-docs.readthedocs.io/en/latest/"
+				}
+			],
+			"install": [
+				"#!/bin/bash",
+				"chmod -R g+rwx /home/snops/f5-rs-*"
+			],
+			"skip":false,
+			"skipinstall":true
+		},
+		{
 			"name":"f5-rs-as3",
 			"repo":"https://github.com/F5-use-cases/f5-rs-as3.git",
 			"branch": {
