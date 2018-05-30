@@ -13,7 +13,7 @@
 			],
 			"install": [
 				"#!/bin/bash",
-				"cp /home/snops/f5-rs-jenkins/f5-rs-global-vars-vault.yaml /home/snops/f5-rs-global-vars-vault.yaml",
+				"cp -n /home/snops/f5-rs-jenkins/f5-rs-global-vars-vault.yaml /home/snops/f5-rs-global-vars-vault.yaml",
 				"chown jenkins:snops /home/snops/f5-rs-global-vars-vault.yaml"
 			],
 			"skip":false,
