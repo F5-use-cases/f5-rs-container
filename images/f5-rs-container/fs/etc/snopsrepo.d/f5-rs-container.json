@@ -191,10 +191,11 @@
 			],
 			"install": [
 				"#!/bin/bash",
-				"chmod -R g+rwx /home/snops/f5-rs-*"
+				"cd /home/snops/f5-rs-app1",
+				"git checkout dev"
 			],
 			"skip":false,
-			"skipinstall":true
+			"skipinstall":false
 		},
 		{
 			"name":"f5-rs-as3",
