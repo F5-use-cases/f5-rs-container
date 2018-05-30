@@ -30,7 +30,7 @@ def process_repo_file(filename, stack={"repos":[]}, depth=0):
 	if 'include' in repo_dict:
 		for includerepo in repo_dict["include"]:
 			debug("found include: %s" % includerepo)
-			stack = process_repo_file("/tmp/snops-repo/images/%s/fs/etc/snopsrepo.d/%s.json" % (includerepo, includerepo), stack, depth+1)
+			stack = process_repo_file("/tmp/snops-repo/images/f5-rs-container/fs/etc/snopsrepo.d/f5-rs-container.json" % (includerepo, includerepo), stack, depth+1)
 
 	stack["repos"].extend(repo_dict["repos"])
 	return stack
