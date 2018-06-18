@@ -47,8 +47,6 @@ EXPOSE 22 80 50000 8080 8000
 # ENV variable used by various scripts to detect the container environment SNOPS_ISALIVE =1 
 ENV SNOPS_GIT_HOST="github.com" SNOPS_HOST_HTTP="8080" SNOPS_HOST_SSH="2222" SNOPS_AUTOCLONE="1" SNOPS_GH_BRANCH="master" SNOPS_ISALIVE="1"
 
-RUN mkdir /root/.ssh && mkdir /home/snops/.ssh && chown -R snops:snops /home/snops/.ssh && mkdir /var/jenkins_home/.ssh && chown -R jenkins:snops /var/jenkins_home/.ssh
-
 ####################################jekins install#######################################################
 RUN chmod 777 /tmp
 
@@ -141,9 +139,12 @@ RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswit
 #install xmltodict for ansible examples from f5devcentral
 #install q for ansible examples from f5devcentral
 
+RUN mkdir /root/.ssh && mkdir /home/snops/.ssh && chown -R snops:snops /home/snops/.ssh && mkdir /var/jenkins_home/.ssh && chown -R jenkins:snops /var/jenkins_home/.ssh
 
 RUN pip install boto3 boto awscli ansible[azure] xmltodict q
 
+#creates SSH folders 
+RUN mkdir /root/.ssh && mkdir /home/snops/.ssh && chown -R snops:snops /home/snops/.ssh && mkdir /var/jenkins_home/.ssh && chown -R jenkins:snops /var/jenkins_home/.ssh
 
 #####################
 WORKDIR /home/snops
