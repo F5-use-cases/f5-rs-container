@@ -144,7 +144,7 @@ RUN mkdir /root/.ssh && mkdir /home/snops/.ssh && chown -R snops:snops /home/sno
 RUN pip install boto3 boto awscli ansible[azure] xmltodict q
 
 #creates SSH folders 
-RUN mkdir /root/.ssh && mkdir /home/snops/.ssh && chown -R snops:snops /home/snops/.ssh && mkdir /var/jenkins_home/.ssh && chown -R jenkins:snops /var/jenkins_home/.ssh
+RUN mkdir -p /root/.ssh && mkdir -p /home/snops/.ssh && chown -R snops:snops /home/snops/.ssh && mkdir -p /var/jenkins_home/.ssh && chown -R jenkins:snops /var/jenkins_home/.ssh
 
 #####################
 WORKDIR /home/snops
