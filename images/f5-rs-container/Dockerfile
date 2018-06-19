@@ -89,12 +89,11 @@ ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 ARG JENKINS_SHA=b0778a1763e582ecbbece698e9ef78b45579ef8945db0198fe02295de8da15b7
 
 # Can be used to customize where jenkins.war get downloaded from
-ARG JENKINS_URL=https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war
-
+#ARG JENKINS_URL=https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war
+ARG JENKINS_URL=http://mirrors.jenkins.io/war-stable/latest/jenkins.war
 # could use ADD but this one does not check Last-Modified header neither does it allow to control checksum
 # see https://github.com/docker/docker/issues/8331
-RUN curl -fsSL ${JENKINS_URL} -o /usr/share/jenkins/jenkins.war \
-  && echo "${JENKINS_SHA}  /usr/share/jenkins/jenkins.war" | sha256sum -c -
+RUN curl -fsSL ${JENKINS_URL} -o /usr/share/jenkins/jenkins.war 
 
 ARG JENKINS_CI_URL=https://raw.githubusercontent.com/jenkinsci/docker/master
 ADD ${JENKINS_CI_URL}/init.groovy /usr/share/jenkins/ref/init.groovy.d/tcp-slave-agent-port.groovy
