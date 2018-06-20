@@ -26,7 +26,7 @@ RUN chmod +x /usr/sbin/go-dnsmasq
 
 
 # Add useful APKs
-RUN apk add --update openssh bash curl git vim nano python2 py2-requests py2-sphinx py-pip enchant
+RUN apk add --update openssh bash curl git vim nano python2 py2-requests py2-sphinx py-pip enchant rpm
 
 # Upgrade pip
 RUN pip install --upgrade pip
