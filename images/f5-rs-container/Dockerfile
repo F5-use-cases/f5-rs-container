@@ -109,6 +109,9 @@ RUN /usr/local/bin/install-plugins.sh bouncycastle-api cloudbees-folder structs 
 
 RUN chown -R ${user}:${group} "$JENKINS_HOME" /usr/share/jenkins/ref /usr/local/bin/jenkins* /usr/local/bin/*plugins*
 
+#####################create the ansible password file in the jenkins directory######################
+
+RUN echo password > /var/jenkins_home/.vault_pass.txt
 
 ############################################ Ansible installation ########################################
 #Add libraries to compile ansible
