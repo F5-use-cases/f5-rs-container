@@ -49,6 +49,8 @@ cp /home/snops/host_volume/f5-rs-global-vars-vault.yaml /home/snops/f5-rs-global
 mkdir -p /var/jenkins_home/.aws && cp /home/snops/host_volume/credentials /var/jenkins_home/.aws/credentials >> /home/snops/log/cloneGitRepos.log 2>&1 || echo "no aws credentials were found in /home/snops/host_volume/credentials" 
 echo password > /var/jenkins_home/.vault_pass.txt || echo "problem creating ansible password file /var/jenkins_home/.vault_pass.txt"
 chown -R jenkins:snops /var/jenkins_home/.ssh && chmod 600 /var/jenkins_home/.ssh/* >> /home/snops/log/cloneGitRepos.log 2>&1 || echo "problem changing permissions for /var/jenkins_home/.ssh/*"
+ansible-playbook --vault-password-file /var/jenkins_home/.vault_pass.txt /home/snops/f5-rs-jenkins/playbooks/jenkins_config.yaml || echo "problem running jenkins setup playbook"
+
 
 echo ""
 echo ""
