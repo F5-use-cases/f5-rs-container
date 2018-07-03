@@ -34,11 +34,28 @@ if [ -f /snopsboot/${SNOPS_IMAGE}-pre.sh ]; then
 	. /snopsboot/${SNOPS_IMAGE}-pre.sh
 fi
 
-cat /etc/motd
+
 
 if [ -f /snopsboot/${SNOPS_IMAGE}-post.sh ]; then
 	. /snopsboot/${SNOPS_IMAGE}-post.sh
 fi
+
+echo ""
+echo ""
+echo "Personalizing the container from host volume (if exists)..."
+echo ""
+mkdir -p /var/jenkins_home/.ssh && cp -r /home/snops/host_volume/sshkeys/* /var/jenkins_home/.ssh >> /home/snops/log/cloneGitRepos.log 2>&1 || echo "no ssh keys were found in /home/snops/host_volume/sshkeys/"
+cp /home/snops/host_volume/f5-rs-global-vars-vault.yaml /home/snops/f5-rs-global-vars-vault.yaml >> /home/snops/log/cloneGitRepos.log 2>&1 || echo "no parameters file was found in  /home/snops/f5-rs-global-vars-vault.yaml"
+mkdir -p /var/jenkins_home/.aws && cp /home/snops/host_volume/credentials /var/jenkins_home/.aws/credentials >> /home/snops/log/cloneGitRepos.log 2>&1 || echo "no aws credentials were found in /home/snops/host_volume/credentials" 
+echo password > /var/jenkins_home/.vault_pass.txt >> /home/snops/log/cloneGitRepos.log 2>&1 || echo "problem creating ansible password file /var/jenkins_home/.vault_pass.txt"
+chown -R jenkins:snops /var/jenkins_home/.ssh && chmod 600 /var/jenkins_home/.ssh/* >> /home/snops/log/cloneGitRepos.log 2>&1 || echo "problem changing permissions for /var/jenkins_home/.ssh/*"
+
+echo ""
+echo ""
+echo ""
+echo ""
+
+cat /etc/motd
 
 echo ""
 echo "(you can now detach by using Ctrl+P+Q)"

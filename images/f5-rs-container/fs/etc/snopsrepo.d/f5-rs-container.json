@@ -257,6 +257,69 @@
 			"skipinstall":true
 		},
 		{
+			"name":"f5-rs-azure-net",
+			"repo":"https://github.com/F5-use-cases/f5-rs-azure-net.git",
+			"branch": {
+				"env":"SNOPS_GH_BRANCH",
+				"default":"master"
+			},
+			"docs": [
+				{
+					"name":"readme",
+					"url":"http://f5-rs-docs.readthedocs.io/en/latest/"
+				}
+			],
+			"install": [
+				"#!/bin/bash",
+				"cd /home/snops/f5-rs-app2",
+				"git checkout dev"
+			],
+			"skip":false,
+			"skipinstall":true
+		},
+		{
+			"name":"f5-rs-azure-app",
+			"repo":"https://github.com/F5-use-cases/f5-rs-azure-app.git",
+			"branch": {
+				"env":"SNOPS_GH_BRANCH",
+				"default":"master"
+			},
+			"docs": [
+				{
+					"name":"readme",
+					"url":"http://f5-rs-docs.readthedocs.io/en/latest/"
+				}
+			],
+			"install": [
+				"#!/bin/bash",
+				"cd /home/snops/f5-rs-app2",
+				"git checkout dev"
+			],
+			"skip":false,
+			"skipinstall":true
+		},
+		{
+			"name":"f5-rs-bigip-app",
+			"repo":"https://github.com/F5-use-cases/f5-rs-azure-bigip.git",
+			"branch": {
+				"env":"SNOPS_GH_BRANCH",
+				"default":"master"
+			},
+			"docs": [
+				{
+					"name":"readme",
+					"url":"http://f5-rs-docs.readthedocs.io/en/latest/"
+				}
+			],
+			"install": [
+				"#!/bin/bash",
+				"cd /home/snops/f5-rs-app2",
+				"git checkout dev"
+			],
+			"skip":false,
+			"skipinstall":true
+		},
+		{
 			"name":"f5-rs-as3",
 			"repo":"https://github.com/F5-use-cases/f5-rs-as3.git",
 			"branch": {
