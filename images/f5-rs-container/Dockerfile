@@ -114,7 +114,7 @@ RUN chown -R ${user}:${group} "$JENKINS_HOME" /usr/share/jenkins/ref /usr/local/
 RUN apk add --update gcc python2-dev linux-headers libc-dev libffi libffi-dev openssl openssl-dev
 
 #install ansible
-RUN pip install requests==2.16 ansible==2.5 bigsuds f5-sdk netaddr deepdiff ansible-lint ansible-review
+RUN pip install requests==2.16 ansible==2.7 bigsuds f5-sdk netaddr deepdiff ansible-lint ansible-review
 
 
 ###########################################install etcd########################################
