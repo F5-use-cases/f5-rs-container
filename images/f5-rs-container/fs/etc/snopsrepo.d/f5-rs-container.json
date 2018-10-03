@@ -291,8 +291,8 @@
 			"skipinstall":false
 		},
 		{
-			"name":"f5-rs-bigiq-iac",
-			"repo":"https://github.com/F5-use-cases/f5-rs-bigiq-iac.git",
+			"name":"f5-rs-azure-bigiq-iac",
+			"repo":"https://github.com/F5-use-cases/f5-rs-azure-bigiq-iac.git",
 			"branch": {
 				"env":"SNOPS_GH_BRANCH",
 				"default":"master"
@@ -305,7 +305,7 @@
 			],
 			"install": [
 				"#!/bin/bash",
-				"cd /home/snops/f5-rs-bigiq-iac",
+				"cd /home/snops/f5-rs-azure-bigiq-iac",
 				"git checkout dev"
 			],
 			"skip":false,
