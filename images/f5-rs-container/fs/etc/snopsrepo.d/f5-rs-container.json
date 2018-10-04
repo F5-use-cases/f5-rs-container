@@ -37,6 +37,23 @@
 			"skipinstall":true
 		},
 		{
+			"name":"f5-rs-bigiq",
+			"repo":"https://github.com/F5-use-cases/f5-rs-bigiq.git",
+			"branch":"master",
+			"docs": [
+				{
+					"name":"README",
+					"url":"http://f5-rs-docs.readthedocs.io/en/latest/"
+				}
+			],
+			"install": [
+				"#!/bin/bash",
+				"chmod -R g+rwx /home/snops/f5-rs-attacks"
+			],
+			"skip":false,
+			"skipinstall":true
+		},
+		{
 			"name":"f5-rs-waf",
 			"repo":"https://github.com/F5-use-cases/f5-rs-waf.git",
 			"branch":"master",
