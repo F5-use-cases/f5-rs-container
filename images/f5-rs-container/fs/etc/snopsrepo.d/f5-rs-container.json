@@ -140,7 +140,7 @@
 		},
 		{
 			"name":"f5-rs-bigip",
-			"repo":"https://github.com/F5-use-cases/f5-bigip.git",
+			"repo":"https://github.com/F5-use-cases/f5-rs-bigip.git",
 			"branch":"master",
 			"docs": [
 				{
