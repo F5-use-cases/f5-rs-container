@@ -4,7 +4,7 @@
 #############################################################
 
 # Start with an awesome, tiny Linux distro.
-FROM alpine:3.5
+FROM golang:alpine
 
 LABEL maintainer "y.rosenboim@f5.com"
 
@@ -116,7 +116,17 @@ RUN apk add --update gcc python2-dev linux-headers libc-dev libffi libffi-dev op
 #install ansible
 RUN pip install requests ansible==2.7 bigsuds f5-sdk netaddr deepdiff ansible-lint ansible-review
 
-
+###########################################install terraform##################################
+ENV TERRAFORM_VERSION=0.11.11
+WORKDIR /home/snops
+RUN apk update && \
+    apk add ca-certificates unzip wget && \
+    cd /tmp && \
+    wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
+    unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/bin && \
+    rm -rf /tmp/terraform* && \
+    rm -rf /var/cache/apk/* && \
+    rm -rf /var/tmp/terraform*
 ###########################################install etcd########################################
 ENV ETCD_VER v3.3.0
 ENV GOOGLE_URL https://storage.googleapis.com/etcd
