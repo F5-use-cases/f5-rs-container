@@ -54,7 +54,7 @@
 			"skipinstall":true
 		},
 		{
-			"name":"f5-rs-simulated-attacks",
+			"name":"f5-rs-simulated-traffic",
 			"repo":"https://github.com/F5-use-cases/f5-rs-simulated-traffic.git",
 			"branch":"master",
 			"docs": [
@@ -65,7 +65,7 @@
 			],
 			"install": [
 				"#!/bin/bash",
-				"chmod -R g+rwx /home/snops/f5-rs-attacks"
+				"chmod -R g+rwx /home/snops/f5-rs-traffic"
 			],
 			"skip":false,
 			"skipinstall":true
