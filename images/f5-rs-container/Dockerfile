@@ -4,7 +4,7 @@
 #############################################################
 
 # Start with an awesome, tiny Linux distro.
-FROM alpine:3.5
+FROM alpine:3.9.4
 
 LABEL maintainer "y.rosenboim@f5.com"
 
