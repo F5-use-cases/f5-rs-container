@@ -81,7 +81,7 @@ RUN mkdir -p /usr/share/jenkins/ref/init.groovy.d
 # jenkins version being bundled in this docker image
 ARG JENKINS_VERSION
 #ENV JENKINS_VERSION ${JENKINS_VERSION:-2.46.2}
-ENV JENKINS_VERSION ${JENKINS_VERSION:-2.150.2}
+ENV JENKINS_VERSION ${JENKINS_VERSION:-2.178}
 ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 
 # jenkins.war checksum, download will be validated using it
