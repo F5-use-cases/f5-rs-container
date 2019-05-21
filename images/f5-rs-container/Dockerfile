@@ -95,7 +95,7 @@ ARG JENKINS_URL=http://mirrors.jenkins.io/war-stable/latest/jenkins.war
 # see https://github.com/docker/docker/issues/8331
 RUN curl -fsSL ${JENKINS_URL} -o /usr/share/jenkins/jenkins.war 
 
-ARG JENKINS_CI_URL=https://raw.githubusercontent.com/jenkinsci/docker/master
+ARG JENKINS_CI_URL=https://raw.githubusercontent.com/jenkinsci/docker/alpine
 ADD ${JENKINS_CI_URL}/init.groovy /usr/share/jenkins/ref/init.groovy.d/tcp-slave-agent-port.groovy
 ADD ${JENKINS_CI_URL}/jenkins-support /usr/local/bin/jenkins-support
 ADD ${JENKINS_CI_URL}/jenkins.sh /usr/local/bin/jenkins.sh
