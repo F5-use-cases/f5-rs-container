@@ -17,4 +17,4 @@ git clone https://github.com/F5-use-cases/f5-rs-container.git /tmp/snops-repo >>
 python /snopsboot/updateRepos.py /tmp/snops-repo/images/f5-rs-container/fs/etc/snopsrepo.d/f5-rs-container.json
 python /snopsboot/cloneGitRepos.py
 
-chmod -R a+rwx /home/snops
+chmod -R 755 /home/snops
