@@ -18,3 +18,4 @@ python /snopsboot/updateRepos.py /tmp/snops-repo/images/f5-rs-container/fs/etc/s
 python /snopsboot/cloneGitRepos.py
 
 chmod -R 755 /home/snops
+chmod -R 777 /f5-rs-waf/roles/waf_policies/
