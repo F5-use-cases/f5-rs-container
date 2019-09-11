@@ -26,7 +26,7 @@ RUN chmod +x /usr/sbin/go-dnsmasq
 
 
 # Add useful APKs
-RUN apk add --update openssh bash curl git vim nano python2 py2-requests py2-sphinx py-pip enchant rpm
+RUN apk add --update openssh bash curl git vim nano python3 py-pip enchant rpm
 
 # Upgrade pip
 RUN pip install --upgrade pip
@@ -111,10 +111,10 @@ RUN chown -R ${user}:${group} "$JENKINS_HOME" /usr/share/jenkins/ref /usr/local/
 
 ############################################ Ansible installation ########################################
 #Add libraries to compile ansible
-RUN apk add --update gcc python2-dev linux-headers libc-dev libffi libffi-dev openssl openssl-dev
+RUN apk add --update gcc linux-headers libc-dev libffi libffi-dev openssl openssl-dev
 
 #install ansible
-RUN pip install requests ansible==2.8 bigsuds f5-sdk netaddr deepdiff ansible-lint ansible-review
+RUN pip install requests ansible==2.8 bigsuds f5-sdk netaddr deepdiff 
 
 
 ###########################################install etcd########################################
