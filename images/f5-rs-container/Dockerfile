@@ -26,10 +26,10 @@ RUN chmod +x /usr/sbin/go-dnsmasq
 
 
 # Add useful APKs
-RUN apk add --update openssh bash curl git vim nano python3 py-pip enchant rpm
+RUN apk add --update openssh bash curl git vim nano python3 rpm
 
 # Upgrade pip
-RUN pip install --upgrade pip
+#RUN pip install --upgrade pip
 
 # Setup various users and passwords
 RUN adduser -h /home/snops -u 1000 -s /bin/bash snops -D && echo 'snops:default' | chpasswd && echo 'root:default' | chpasswd
@@ -111,10 +111,10 @@ RUN chown -R ${user}:${group} "$JENKINS_HOME" /usr/share/jenkins/ref /usr/local/
 
 ############################################ Ansible installation ########################################
 #Add libraries to compile ansible
-RUN apk add --update gcc linux-headers libc-dev libffi libffi-dev openssl openssl-dev
+#RUN apk add --update gcc linux-headers libc-dev libffi libffi-dev openssl openssl-dev
 
 #install ansible
-RUN pip install ansible==2.8
+#RUN pip install ansible==2.8
 
 
 ###########################################install etcd########################################
@@ -139,7 +139,7 @@ RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswit
 #install xmltodict for ansible examples from f5devcentral
 #install q for ansible examples from f5devcentral
 
-RUN pip install boto3 boto awscli ansible[azure] xmltodict q
+#RUN pip install boto3 boto awscli ansible[azure] xmltodict q
 
 #creates SSH folders 
 RUN mkdir -p /home/snops/.ssh && chown -R snops:snops /home/snops/.ssh && mkdir -p /var/jenkins_home/.ssh && chown -R jenkins:snops /var/jenkins_home/.ssh
