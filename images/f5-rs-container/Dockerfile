@@ -26,7 +26,7 @@ RUN chmod +x /usr/sbin/go-dnsmasq
 
 
 # Add useful APKs
-RUN apk add --update openssh bash curl git vim nano python3 rpm ansible
+RUN apk add --update openssh bash curl git vim nano python3 rpm ansible py-pip
 
 # Upgrade pip
 RUN pip install --upgrade pip
