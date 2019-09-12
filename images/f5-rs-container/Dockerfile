@@ -139,7 +139,8 @@ RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswit
 #install xmltodict for ansible examples from f5devcentral
 #install q for ansible examples from f5devcentral
 
-RUN pip3 install boto3 botocore awscli requests
+RUN pip3 install boto3 botocore awscli
+RUN pip install requests
 #RUN pip install ansible[azure] xmltodict q
 
 #creates SSH folders 
