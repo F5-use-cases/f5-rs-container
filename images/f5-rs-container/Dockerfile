@@ -4,7 +4,7 @@
 #############################################################
 
 # Start with an awesome, tiny Linux distro.
-FROM alpine:3.9.4
+FROM alpine:3.10.2
 
 LABEL maintainer "y.rosenboim@f5.com"
 
@@ -26,7 +26,7 @@ RUN chmod +x /usr/sbin/go-dnsmasq
 
 
 # Add useful APKs
-RUN apk add --update openssh bash curl git vim nano python3 rpm py-pip
+RUN apk add --update openssh bash curl git vim nano python3 rpm py-pip ansible
 
 # Upgrade pip
 RUN pip install --upgrade pip
@@ -114,7 +114,7 @@ RUN chown -R ${user}:${group} "$JENKINS_HOME" /usr/share/jenkins/ref /usr/local/
 RUN apk add --update gcc linux-headers libc-dev libffi libffi-dev openssl openssl-dev
 
 #install ansible
-RUN pip3 install ansible==2.8
+#RUN pip3 install ansible==2.8
 
 
 ###########################################install etcd########################################
