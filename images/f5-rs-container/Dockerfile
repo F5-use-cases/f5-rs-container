@@ -111,7 +111,7 @@ RUN chown -R ${user}:${group} "$JENKINS_HOME" /usr/share/jenkins/ref /usr/local/
 
 ############################################ Ansible installation ########################################
 #Add libraries to compile ansible
-#RUN apk add --update gcc linux-headers libc-dev libffi libffi-dev openssl openssl-dev
+RUN apk add --update gcc linux-headers libc-dev libffi libffi-dev openssl openssl-dev
 
 #install ansible
 #RUN pip install ansible==2.8
