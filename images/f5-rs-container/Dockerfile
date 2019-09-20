@@ -117,7 +117,7 @@ RUN apk add --update gcc linux-headers libc-dev libffi libffi-dev openssl openss
 #RUN pip3 install ansible==2.8
 
 ###########################################install terraform##################################
-ENV TERRAFORM_VERSION=0.11.11
+ENV TERRAFORM_VERSION=0.12.9
 WORKDIR /home/snops
 RUN apk update && \
     apk add ca-certificates unzip wget && \
