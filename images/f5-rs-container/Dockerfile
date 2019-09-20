@@ -116,6 +116,17 @@ RUN apk add --update gcc linux-headers libc-dev libffi libffi-dev openssl openss
 #install ansible
 #RUN pip3 install ansible==2.8
 
+###########################################install terraform##################################
+ENV TERRAFORM_VERSION=0.11.11
+WORKDIR /home/snops
+RUN apk update && \
+    apk add ca-certificates unzip wget && \
+    cd /tmp && \
+    wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
+    unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/bin && \
+    rm -rf /tmp/terraform* && \
+    rm -rf /var/cache/apk/* && \
+    rm -rf /var/tmp/terraform*
 
 ###########################################install etcd########################################
 ENV ETCD_VER v3.3.0
