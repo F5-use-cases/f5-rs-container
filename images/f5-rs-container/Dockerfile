@@ -4,7 +4,9 @@
 #############################################################
 
 # Start with an awesome, tiny Linux distro.
-FROM alpine:3.9.4
+
+FROM alpine:3.10.2
+
 
 LABEL maintainer "y.rosenboim@f5.com"
 
@@ -26,7 +28,7 @@ RUN chmod +x /usr/sbin/go-dnsmasq
 
 
 # Add useful APKs
-RUN apk add --update openssh bash curl git vim nano python2 py2-requests py2-sphinx py-pip enchant rpm
+RUN apk add --update openssh bash curl git vim nano python3 rpm py-pip ansible
 
 # Upgrade pip
 RUN pip install --upgrade pip
@@ -105,17 +107,28 @@ RUN chmod 755 /usr/local/bin/jenkins* /usr/local/bin/*plugins*
 
 ENV JENKINS_UC https://updates.jenkins.io
 
-RUN /usr/local/bin/install-plugins.sh bouncycastle-api structs pam-auth windows-slaves mailer ldap external-monitor-job matrix-auth script-security matrix-project credentials credentials-binding timestamper scm-api durable-task workflow-durable-task-step resource-disposer ws-cleanup ant gradle pipeline-milestone-step pipeline-input-step ace-editor workflow-scm-step workflow-cps pipeline-stage-step workflow-job pipeline-graph-analysis pipeline-rest-api handlebars momentjs pipeline-stage-view pipeline-build-step pipeline-model-api ssh-credentials git-client git-server workflow-cps-global-lib branch-api workflow-multibranch authentication-tokens docker-commons docker-workflow pipeline-model-declarative-agent workflow-basic-steps pipeline-model-definition workflow-aggregator github github-branch-source pipeline-github-lib github-organization-folder mapdb-api email-ext slack build-pipeline-plugin
+RUN /usr/local/bin/install-plugins.sh bouncycastle-api splunk-devops structs pam-auth windows-slaves mailer ldap external-monitor-job matrix-auth script-security matrix-project credentials credentials-binding timestamper scm-api durable-task workflow-durable-task-step resource-disposer ws-cleanup ant gradle pipeline-milestone-step pipeline-input-step ace-editor workflow-scm-step workflow-cps pipeline-stage-step workflow-job pipeline-graph-analysis pipeline-rest-api handlebars momentjs pipeline-stage-view pipeline-build-step pipeline-model-api ssh-credentials git-client git-server workflow-cps-global-lib branch-api workflow-multibranch authentication-tokens docker-commons docker-workflow pipeline-model-declarative-agent workflow-basic-steps pipeline-model-definition workflow-aggregator github github-branch-source pipeline-github-lib github-organization-folder mapdb-api email-ext slack build-pipeline-plugin
 
 RUN chown -R ${user}:${group} "$JENKINS_HOME" /usr/share/jenkins/ref /usr/local/bin/jenkins* /usr/local/bin/*plugins*
 
 ############################################ Ansible installation ########################################
 #Add libraries to compile ansible
-RUN apk add --update gcc python2-dev linux-headers libc-dev libffi libffi-dev openssl openssl-dev
+RUN apk add --update gcc linux-headers libc-dev libffi libffi-dev openssl openssl-dev
 
 #install ansible
-RUN pip install requests ansible==2.6 bigsuds f5-sdk netaddr deepdiff ansible-lint ansible-review
+#RUN pip3 install ansible==2.8
 
+###########################################install terraform##################################
+ENV TERRAFORM_VERSION=0.12.9
+WORKDIR /home/snops
+RUN apk update && \
+    apk add ca-certificates unzip wget && \
+    cd /tmp && \
+    wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
+    unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/bin && \
+    rm -rf /tmp/terraform* && \
+    rm -rf /var/cache/apk/* && \
+    rm -rf /var/tmp/terraform*
 
 ###########################################install etcd########################################
 ENV ETCD_VER v3.3.0
@@ -139,7 +152,9 @@ RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswit
 #install xmltodict for ansible examples from f5devcentral
 #install q for ansible examples from f5devcentral
 
-RUN pip install boto3 boto awscli ansible[azure] xmltodict q
+RUN pip3 install boto3 botocore awscli
+RUN pip install requests
+#RUN pip install ansible[azure] xmltodict q
 
 #creates SSH folders 
 RUN mkdir -p /home/snops/.ssh && chown -R snops:snops /home/snops/.ssh && mkdir -p /var/jenkins_home/.ssh && chown -R jenkins:snops /var/jenkins_home/.ssh
