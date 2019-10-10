@@ -13,8 +13,8 @@
 			],
 			"install": [
 				"#!/bin/bash",
-				"cp -n /home/snops/f5-rs-jenkins/f5-rs-global-vars-vault.yaml /home/snops/f5-rs-global-vars-vault.yaml",
-				"chown jenkins:snops /home/snops/f5-rs-global-vars-vault.yaml"
+				"cd /home/snops/f5-rs-jenkins",
+				"git checkout v1.0.0"
 			],
 			"skip":false,
 			"skipinstall":false
