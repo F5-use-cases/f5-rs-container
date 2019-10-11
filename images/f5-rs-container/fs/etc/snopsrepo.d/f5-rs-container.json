@@ -14,7 +14,7 @@
 			"install": [
 				"#!/bin/bash",
 				"cd /home/snops/f5-rs-jenkins",
-				"git checkout v1.1.0"
+				"git checkout v1.2.0"
 			],
 			"skip":false,
 			"skipinstall":false
