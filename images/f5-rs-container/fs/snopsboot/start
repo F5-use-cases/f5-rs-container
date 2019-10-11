@@ -1,56 +1,23 @@
 #!/bin/bash
 
-
-export SNOPS_HOST_IP=`/sbin/ifconfig eth0 | awk '/inet addr/{print substr($2,6)}'`
-export CONTAINER_ID=`cat /proc/self/cgroup | grep "cpu:/" | sed 's/\([0-9]\):cpu:\/docker\///g'`
-echo "CONTAINER_ID=$CONTAINER_ID" > /snopsboot/SNOPS_ENV
-
-for e in `env`
-do
-	if [[ $e == SNOPS_* ]]
-	then
-		echo "[environment] $e"
-		echo $e >> /snopsboot/SNOPS_ENV
-	fi
-done
-
-echo "Reticulating splines..."
-ln -s /usr/bin/sphinx-build-2 /usr/bin/sphinx-build
-
-echo "Becoming self-aware..."
+echo "Cloning repos..."
 /snopsboot/cloneGitRepos.sh
 /snopsboot/cacheGitCredentials.sh
 
 rm -f /usr/bin/vi
 ln -s /usr/bin/vim /usr/bin/vi
 
-if [ -d /host_share ]; then
-	ln -s /host_share /home/snops/host_share
-fi
-
 chown -Rf snops:snops /home/snops
-
-if [ -f /snopsboot/${SNOPS_IMAGE}-pre.sh ]; then
-	. /snopsboot/${SNOPS_IMAGE}-pre.sh
-fi
-
-
-
-if [ -f /snopsboot/${SNOPS_IMAGE}-post.sh ]; then
-	. /snopsboot/${SNOPS_IMAGE}-post.sh
-fi
 
 echo ""
 echo ""
 echo "Personalizing the container from host volume (if exists)..."
 echo ""
 mkdir -p /var/jenkins_home/.ssh && cp -r /home/snops/host_volume/sshkeys/* /var/jenkins_home/.ssh >> /home/snops/log/cloneGitRepos.log 2>&1 || echo "no ssh keys were found in /home/snops/host_volume/sshkeys/"
-cp /home/snops/host_volume/f5-rs-global-vars-vault.yaml /home/snops/f5-rs-global-vars-vault.yaml >> /home/snops/log/cloneGitRepos.log 2>&1 || echo "no parameters file was found in  /home/snops/f5-rs-global-vars-vault.yaml"
 mkdir -p /var/jenkins_home/.aws && cp /home/snops/host_volume/aws/credentials /var/jenkins_home/.aws/credentials >> /home/snops/log/cloneGitRepos.log 2>&1 || echo "no aws credentials were found in /home/snops/host_volume/aws/credentials"
 mkdir -p /var/jenkins_home/.azure && cp /home/snops/host_volume/azure/credentials /var/jenkins_home/.azure/credentials >> /home/snops/log/cloneGitRepos.log 2>&1 || echo "no azure credentials were found in /home/snops/host_volume/azure/credentials"
-echo password > /var/jenkins_home/.vault_pass.txt || echo "problem creating ansible password file /var/jenkins_home/.vault_pass.txt"
 chown -R jenkins:snops /var/jenkins_home/.ssh && chmod 600 /var/jenkins_home/.ssh/* >> /home/snops/log/cloneGitRepos.log 2>&1 || echo "problem changing permissions for /var/jenkins_home/.ssh/*"
-ansible-playbook --vault-password-file /var/jenkins_home/.vault_pass.txt /home/snops/f5-rs-jenkins/playbooks/jenkins_config.yaml || echo "problem running jenkins setup playbook"
+ansible-playbook /home/snops/f5-rs-jenkins/playbooks/jenkins_config.yaml || echo "problem running jenkins setup playbook"
 
 
 echo ""
