@@ -71,6 +71,23 @@
 			"skipinstall":true
 		},
 		{
+			"name":"f5-rs-aws",
+			"repo":"https://github.com/F5-use-cases/f5-rs-aws.git",
+			"branch":"master",
+			"docs": [
+				{
+					"name":"README",
+					"url":"http://f5-rs-docs.readthedocs.io/en/latest/"
+				}
+			],
+			"install": [
+				"#!/bin/bash",
+				"chmod -R g+rwx f5-rs-aws-external-lb"
+			],
+			"skip":false,
+			"skipinstall":true
+		},
+		{
 			"name":"f5-rs-app1",
 			"repo":"https://github.com/F5-use-cases/f5-rs-app1.git",
 			"branch": {
