@@ -13,11 +13,10 @@
 			],
 			"install": [
 				"#!/bin/bash",
-				"cd /home/snops/f5-rs-jenkins",
-				"git checkout v1.2.1"
+				"cd /home/snops/f5-rs-jenkins"
 			],
 			"skip":false,
-			"skipinstall":false
+			"skipinstall":true
 		},
 		{
 			"name":"f5-rs-bigiq",
